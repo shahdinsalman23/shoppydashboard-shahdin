@@ -4,13 +4,14 @@ import { pieChartData } from '../../data/dummy';
 import { useStateContext } from '../../contexts/ContextProvider';
 
 
-const PieChart = () => {
+const PieChart = ({ id, data, legendVisiblity, dataLabel, height }) => {
   const { currentMode } = useStateContext();
   return (
     <div className='w-full'>
       <AccumulationChartComponent
-        id="pie-chart"
-        legendSettings={{ visible: true, background: 'white' }}
+        id={id}
+        height={height}
+        legendSettings={{ visible: legendVisiblity }}
         enableSmartLabels={true}
         enableBorderOnMouseMove={true}
         tooltip={{ enable: true }}
