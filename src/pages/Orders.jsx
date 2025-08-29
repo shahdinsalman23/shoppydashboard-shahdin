@@ -12,10 +12,10 @@ const Orders = () => {
         allowPaging
         allowSorting
         width="auto"
-        toolbar={['ExcelExport', 'PdfExport']}
+        // toolbar={['ExcelExport', 'PdfExport']} 
         allowExcelExport
         allowPdfExport
-        editSettings={{ allowEditing: true, allowDeleting: true }}
+        // editSettings={{ allowEditing: true, allowDeleting: true }}
         contextMenuItems={contextMenuItems}
       >
         <ColumnsDirective>
