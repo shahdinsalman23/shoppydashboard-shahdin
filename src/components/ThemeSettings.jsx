@@ -6,28 +6,27 @@ import { themeColors } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const ThemeSettings = () => {
+
+  const { setColor, setMode, currentMode, currentColor, setThemeSetting } = useStateContext();
+
   return (
-    <div className='fixed top-0 right-0 w-screen h-screen bg-half-transparent'>
+    <div className='fixed top-0 right-0 w-screen h-screen bg-half-transparent z-50'>
       <div className='float-right h-screen dark:text-gray-200 bg-white dark:bg-[#484B52] w-400'>
         <div className='flex justify-between items-center p-4 ml-4'>
           <p className='font-semibold text-lg'>Settings</p>
-          <button type="button" onClick={() => { }} style={{ color: 'rgb(153, 171, 180)', borderRadius: '50%' }} className='text-2xl p-3 hover:drop-shadow-xl hover:bg-light-gray'>
+          <button type="button" onClick={() => setThemeSetting(false)} style={{ color: 'rgb(153, 171, 180)', borderRadius: '50%' }} className='text-2xl p-3 hover:drop-shadow-xl hover:bg-light-gray'>
             <MdOutlineCancel />
           </button>
         </div>
         <div className='flex-col border-t-1 border-color p-4 ml-4'>
           <p className='font-semibold text-md'>Theme Options</p>
           <div className='mt-4'>
-            <input type="radio" id="light" name="theme" value="Light" className='cursor-pointer' onChange={() => { }} checked={true} />
+            <input type="radio" id="light" name="theme" value="Light" className='cursor-pointer' onChange={setMode} checked={currentMode === 'Light'} />
             <label htmlFor="light" className='ml-2 text-md cursor-pointer'>Light</label>
           </div>
           <div className='mt-4'>
-            <input type="radio" id="dark" name="theme" value="Dark" className='cursor-pointer' onChange={() => { }}  checked={true}/>
+            <input type="radio" id="dark" name="theme" value="Dark" className='cursor-pointer' onChange={setMode} checked={currentMode === 'Dark'} />
             <label htmlFor="dark" className='ml-2 text-md cursor-pointer'>Dark</label>
-          </div>
-          <div className='mt-4'>
-            <input type="radio" id="system" name="theme" value="System" className='cursor-pointer' onChange={() => { }} checked={true}/>
-            <label htmlFor="system" className='ml-2 text-md cursor-pointer'>System</label>
           </div>
         </div>
         <div className='flex-col border-t-1 border-color p-4 ml-4'>
@@ -36,13 +35,13 @@ const ThemeSettings = () => {
             {themeColors.map((item, index) => (
               <TooltipComponent key={index} content={item.name} position="TopCenter">
                 <div className='relative mt-2 cursor-pointer flex gap-5 items-center'>
-                  <button type="button" className='h-10 w-10 rounded-full cursor-pointer' style={{ backgroundColor: item.color }} onClick={() => { }}>
+                  <button type="button" className='h-10 w-10 rounded-full cursor-pointer' style={{ backgroundColor: item.color }} onClick={() => setColor(item.color)}>
                   </button>
-                  <BsCheck className='absolute text-2xl text-white top-2 left-2' style={{ display: item.color === '' ? 'none' : 'block' }} />
+                  <BsCheck className='absolute text-2xl text-white top-2 left-2' style={{ display: item.color === currentColor ? 'block' : 'none' }} />
                 </div>
               </TooltipComponent>
             ))}
-          </div>
+          </div>  
         </div>
       </div>
     </div>

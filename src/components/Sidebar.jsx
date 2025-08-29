@@ -7,12 +7,12 @@ import { links } from '../data/dummy'
 import { useStateContext } from '../contexts/ContextProvider'
 const Sidebar = () => {
 
-  const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize, currentColor } = useStateContext();
 
   const handcleCloseSidebar = () => {
     if (activeMenu && screenSize <= 900) {
       setActiveMenu(false);
-    } 
+    }
   }
 
   return (
@@ -41,10 +41,13 @@ const Sidebar = () => {
                       to={`/${link.name}`}
                       key={link.name}
                       onClick={handcleCloseSidebar}
+                      style={({ isActive }) => ({
+                        backgroundColor: isActive ? currentColor : '',
+                      })}
                       className={({ isActive }) =>
                         isActive
-                          ? 'bg-light-gray text-black dark:text-white dark:bg-secondary-dark-bg flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2'
-                          : 'text-gray-700 dark:text-gray-200 hover:bg-light-gray hover:text-black flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2'
+                          ? 'text-white flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2'
+                          : 'text-gray-700 dark:text-gray-200 hover:bg-light-gray hover:text-black dark:hover:text-black flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg m-2'
                       }
                     >
                       {link.icon}
