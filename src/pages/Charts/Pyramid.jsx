@@ -9,14 +9,14 @@ const Pyramid = () => {
   const { currentMode } = useStateContext();
 
   return (
-    <div className='m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded-3xl'>
+    <div className='m-4 md:m-10 mt-24 p-10 bg-white  rounded-3xl'>
       <Header category="Chart" title="Pyramid Chart" />
       <div className='w-full'>
         <AccumulationChartComponent
           id="pyramid-chart"
           legendSettings={{ background: 'white', visible: true, position: 'Right', textStyle: { color: currentMode === 'Dark' ? 'white' : 'black' } }}
           height="420px"
-          background={currentMode === 'Dark' ? '#33373E' : '#fff'}
+          //background={currentMode === 'Dark' ? '#33373E' : '#fff'}
           tooltip={{ enable: true, format: '${point.x} : <b>${point.y}%</b>' }}
         >
           <Inject services={[AccumulationLegend, PyramidSeries, AccumulationDataLabel, AccumulationTooltip, AccumulationSelection]} />

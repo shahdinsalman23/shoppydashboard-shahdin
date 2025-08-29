@@ -15,7 +15,7 @@ const PieChart = ({ id, data, legendVisiblity, dataLabel, height }) => {
         enableSmartLabels={true}
         enableBorderOnMouseMove={true}
         tooltip={{ enable: true }}
-        background={currentMode === 'Dark' ? '#33373E' : '#fff'}
+       // background={currentMode === 'Dark' ? '#33373E' : '#fff'}
       >
         <Inject services={[AccumulationLegend, PieSeries, AccumulationDataLabel, AccumulationTooltip]} />
         <AccumulationSeriesCollectionDirective>
