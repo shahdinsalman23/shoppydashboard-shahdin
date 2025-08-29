@@ -31,6 +31,7 @@ const App = () => {
               <Navbar />
             </div>
 
+
             {themeSettings && <ThemeSettings />}
 
             <div>
